@@ -1,0 +1,44 @@
+{
+  "name": "viter",
+  "version": "0.1.4",
+  "description": "Rails Common Javascript",
+  "main": "package/index.js",
+  "files": [
+    "package"
+  ],
+  "engines": {
+    "node": ">=6.14.4",
+    "yarn": ">=1.0.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@hotwired/turbo-rails": "^7.0.0-beta.5",
+    "@rails/activestorage": "^6.0.3-7",
+    "choices.js": "^9.0.1",
+    "glob": "^7.1.7",
+    "js-yaml": "^4.1.0",
+    "moment": "^2.29.1",
+    "sortablejs": "^1.13.0",
+    "stickybits": "^3.7.9",
+    "stimulus": "^2.0.0",
+    "weui": "^2.4.4",
+    "weui.js": "^1.2.2"
+  },
+  "devDependencies": {
+    "path-complete-extname": "^1.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint package/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/work.design/rails_ui.git"
+  },
+  "author": "mingyuanqin<mingyuan0715@foxmail.com>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/work.design/rails_ui/issues"
+  },
+  "homepage": "https://github.com/work.design/rails_ui"
+}
