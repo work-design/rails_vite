@@ -1,0 +1,9 @@
+# Vite 默认配置
+default: &default
+  public_root_path: public
+development:
+  <<: *default
+test:
+  <<: *default
+production:
+  <<: *default

@@ -1,0 +1,18 @@
+default: &default
+  root_path: app/assets
+  entry_paths: []
+  alias:
+    a: '/'
+  build:
+    assetsInlineLimit: 0
+    sourcemap: false
+    assetsDir: assets
+development:
+  <<: *default
+  server:
+    host: localhost
+    port: 3036
+test:
+  <<: *default
+production:
+  <<: *default
