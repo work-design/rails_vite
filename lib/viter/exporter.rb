@@ -1,11 +1,11 @@
 require 'rails_ui/yaml_helper'
 
-module RailsUi
+module Viter
   module Exporter
     extend self
 
     def export
-      vite = YamlHelper.new(template: 'config/viter_template.yml', export: 'config/viter.yml')
+      vite = Yaml.new(template: 'config/viter_template.yml', export: 'config/viter.yml')
 
       Rails::Engine.subclasses.each do |engine|
         asset_root = engine.root.join('app/assets')

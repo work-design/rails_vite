@@ -8,13 +8,6 @@ Inspired by [webpacker](https://github.com/rails/webpacker), But more powerful:
 * You can put js or css files under `app/views`, same name as action, which will load automatically.
 
 
-
-## Usage
-How to use my plugin.
-
-## Installation
-Add this line to your application's Gemfile:
-
 ```ruby
 gem 'viter'
 ```
