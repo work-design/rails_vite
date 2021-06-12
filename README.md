@@ -1,5 +1,13 @@
 # Viter
-Short description and motivation.
+
+Rails Frontend Develop suit Make you so happy
+Use [Vite](https://github.com/vitejs/vite),
+Inspired by [webpacker](https://github.com/rails/webpacker), But more powerful:
+
+* for Engine develop: you can import assets files under `app/assets`
+* You can put js or css files under `app/views`, same name as action, which will load automatically.
+
+
 
 ## Usage
 How to use my plugin.
