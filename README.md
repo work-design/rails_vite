@@ -8,22 +8,12 @@ Inspired by [webpacker](https://github.com/rails/webpacker), But more powerful:
 * You can put js or css files under `app/views`, same name as action, which will load automatically.
 
 
-```ruby
-gem 'viter'
-```
+## How to Use
+1. First Add `gem 'viert'` to you gemfile, then bundle it;
 
-And then execute:
-```bash
-$ bundle
-```
+3. Enjoy it;
 
-Or install it yourself as:
-```bash
-$ gem install viter
-```
 
-## Contributing
-Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
