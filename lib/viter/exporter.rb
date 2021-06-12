@@ -1,4 +1,4 @@
-require 'rails_ui/yaml_helper'
+require_relative 'yaml'
 
 module Viter
   module Exporter

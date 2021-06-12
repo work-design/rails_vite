@@ -1,4 +1,5 @@
 require 'rails/railtie'
+require 'viter/exporter'
 
 module Viter
   class Engine < ::Rails::Engine
