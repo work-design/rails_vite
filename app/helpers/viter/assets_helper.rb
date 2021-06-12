@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Ui
+module Viter
   module AssetsHelper
 
     # Assets path: app/assets/javascripts/controllers

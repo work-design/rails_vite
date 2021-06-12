@@ -2,7 +2,7 @@
 
 # Public: Allows to render HTML tags for scripts and styles processed by Vite.
 
-module Ui
+module Viter
   module ViterHelper
 
     def image_vite_tag(name, **options)
