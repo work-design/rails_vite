@@ -7,7 +7,7 @@ const baseConfig = require('./environments/base')
 const config = require('./config')
 const { nodeEnv } = require('./env')
 
-const webpackConfig = () => {
+const viteConfig = () => {
   const path = resolve(__dirname, 'environments', `${nodeEnv}.js`)
   const environmentConfig = existsSync(path) ? require(path) : baseConfig
   return environmentConfig
@@ -15,6 +15,6 @@ const webpackConfig = () => {
 
 module.exports = {
   config,
-  viteConfig: webpackConfig(),
+  viteConfig: viteConfig(),
   baseConfig
 }
