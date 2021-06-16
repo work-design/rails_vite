@@ -7,6 +7,7 @@ default: &default
     assetsInlineLimit: 0
     sourcemap: false
     assetsDir: assets
+    brotliSize: true
 development:
   <<: *default
   server:
