@@ -3,7 +3,7 @@
 
 const baseConfig = require('./base')
 const config = require('../config')
-const getEntryObject = require('../paths')
+const getEntryObject = require('../utils')
 const { join } = require('path')
 
 const getPlugins = () => {
