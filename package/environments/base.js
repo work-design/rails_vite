@@ -21,7 +21,7 @@ const getPlugins = () => {
   const plugins = []
 
   if (resolvedPath('vite-plugin-compression')) {
-    const viteCompression = 'vite-plugin-compression'
+    const viteCompression = require('vite-plugin-compression')
     plugins.push(
       viteCompression()
     )
