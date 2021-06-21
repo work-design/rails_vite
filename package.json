@@ -12,7 +12,7 @@
     "path-complete-extname": "^1.0.0"
   },
   "devDependencies": {
-    "vite": "^2.3.7",
+    "vite": "^2.3.8",
     "vite-plugin-compress": "^2.1.0",
     "vite-plugin-compression": "^0.2.5"
   },
