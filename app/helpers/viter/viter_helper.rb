@@ -27,7 +27,16 @@ module Viter
     end
 
     def image_vite_path(name, **options)
-      image_path(name, options)
+      if Rails.env.development?
+        image_path(name, options)
+      else
+        r = path_to_image(name)
+        r = r.delete_prefix('/')
+        mani = vite_manifest.find(r)
+        if mani
+          image_path("/#{mani['assets'][0]}", **options)
+        end
+      end
     end
 
     # Public: Renders a <script> tag for the specified Vite entrypoints.
