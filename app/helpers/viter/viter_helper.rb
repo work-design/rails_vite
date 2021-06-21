@@ -50,7 +50,7 @@ module Viter
           r.delete_prefix!('/')
           mani = vite_manifest.find(r)
           if mani
-            "/#{mani['file']}"
+            "#{mani['file']}"
           end
         end.compact
       end
