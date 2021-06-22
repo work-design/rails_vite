@@ -9,7 +9,7 @@ module Viter
 
     def run
       load_config
-      detect_port!
+      #detect_port!
       execute_cmd
     end
 

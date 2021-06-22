@@ -1,10 +1,9 @@
 module Viter
   class DevServer
-    DEFAULT_ENV_PREFIX = 'WEBPACKER_DEV_SERVER'.freeze
 
     # Configure dev server connection timeout (in seconds), default: 0.01
     # Webpacker.server.connect_timeout = 1
-    #cattr_accessor(:connect_timeout) { 0.01 }
+    # cattr_accessor(:connect_timeout) { 0.01 }
     attr_reader :config
 
     def initialize(config)
@@ -51,17 +50,9 @@ module Viter
       fetch(:pretty)
     end
 
-    def env_prefix
-      config.server.fetch(:env_prefix, DEFAULT_ENV_PREFIX)
-    end
-
     private
     def fetch(key)
-      ENV["#{env_prefix}_#{key.upcase}"] || config.server.fetch(key, defaults[key])
-    end
-
-    def defaults
-      config.send(:defaults)[:server] || {}
+      config.fetch(key)
     end
 
   end
