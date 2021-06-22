@@ -56,7 +56,7 @@ module Viter
 
     private
     def versions
-      all_files       = Dir.glob("#{config.public_output_path}/**/*")
+      all_files = Dir.glob("#{config.public_output_path}/**/*")
       manifest_config = Dir.glob("#{config.public_manifest_path}*")
 
       packs = all_files - manifest_config - current_version

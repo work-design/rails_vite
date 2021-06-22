@@ -4,12 +4,12 @@ module Viter
 
     delegate :config_path, :logger, to: :@viter
 
-    def self.inquire(webpacker)
-      new(webpacker).inquire
+    def self.inquire(viter)
+      new(viter).inquire
     end
 
-    def initialize(webpacker)
-      @webpacker = webpacker
+    def initialize(viter)
+      @viter = viter
     end
 
     def inquire
@@ -23,7 +23,7 @@ module Viter
     end
 
     def fallback_env_warning
-      logger.info "RAILS_ENV=#{Rails.env} environment is not defined in config/webpacker.yml, falling back to #{DEFAULT} environment"
+      logger.info "RAILS_ENV=#{Rails.env} environment is not defined in config/viter.yml, falling back to #{DEFAULT} environment"
     end
 
     def available_environments

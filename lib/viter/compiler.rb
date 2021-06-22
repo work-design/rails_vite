@@ -5,22 +5,19 @@ module Viter
   class Viter::Compiler
 
     # Additional environment variables that the compiler is being run with
-    # Webpacker::Compiler.env['FRONTEND_API_KEY'] = 'your_secret_key'
+    # Viter::Compiler.env['FRONTEND_API_KEY'] = 'your_secret_key'
     cattr_accessor(:env) { {} }
 
-    delegate :config, :logger, to: :webpacker
+    delegate :config, :logger, to: :viter
+    attr_reader :viter
 
-    def initialize(webpacker)
-      @webpacker = webpacker
+    def initialize(viter)
+      @viter = viter
     end
 
     def compile
       if stale?
-        run_webpack.tap do |success|
-          # We used to only record the digest on success
-          # However, the output file is still written on error, meaning that the digest should still be updated.
-          # If it's not, you can end up in a situation where a recompile doesn't take place when it should.
-          # See https://github.com/rails/webpacker/issues/2113
+        run_vite.tap do |success|
           record_compilation_digest
         end
       else
@@ -40,15 +37,13 @@ module Viter
     end
 
     private
-    attr_reader :webpacker
-
     def last_compilation_digest
       compilation_digest_path.read if compilation_digest_path.exist? && config.public_manifest_path.exist?
     rescue Errno::ENOENT, Errno::ENOTDIR
     end
 
     def watched_files_digest
-      warn "Webpacker::Compiler.watched_paths has been deprecated. Set additional_paths in webpacker.yml instead." unless watched_paths.empty?
+      warn "Webpacker::Compiler.watched_paths has been deprecated. Set additional_paths in viter.yml instead." unless watched_paths.empty?
       Dir.chdir File.expand_path(config.root_path) do
         files = Dir[*default_watched_paths, *watched_paths].reject { |f| File.directory?(f) }
         file_ids = files.sort.map { |f| "#{File.basename(f)}/#{Digest::SHA1.file(f).hexdigest}" }
@@ -67,7 +62,7 @@ module Viter
       /ruby/.match?(first_line) ? RbConfig.ruby : ""
     end
 
-    def run_webpack
+    def run_vite
       logger.info 'Viter Compiling...'
 
       stdout, stderr, status = Open3.capture3(
@@ -102,7 +97,7 @@ module Viter
     end
 
     def compilation_digest_path
-      config.cache_path.join("last-compilation-digest-#{webpacker.env}")
+      config.cache_path.join("last-compilation-digest-#{viter.env}")
     end
 
     def webpack_env
@@ -111,7 +106,7 @@ module Viter
       env.merge(
         'VITER_ASSET_HOST' => ENV.fetch('VITER_ASSET_HOST', ActionController::Base.helpers.compute_asset_host),
         'VITER_RELATIVE_URL_ROOT' => ENV.fetch('VITER_RELATIVE_URL_ROOT', ActionController::Base.relative_url_root),
-        'VITER_CONFIG' => webpacker.config_path.to_s
+        'VITER_CONFIG' => viter.config_path.to_s
       )
     end
 

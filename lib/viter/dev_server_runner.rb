@@ -57,9 +57,11 @@ module Viter
         @argv.delete '--debug-viter'
       end
 
+      cmd += @argv
       cmd += ['--config', @vite_config]
       cmd += ['--progress', '--color'] if @pretty
-      cmd += @argv
+
+      binding.pry
 
       Dir.chdir(@app_path) do
         Kernel.exec *cmd
