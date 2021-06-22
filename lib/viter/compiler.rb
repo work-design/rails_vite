@@ -73,10 +73,7 @@ module Viter
       if status.success?
         logger.info "Compiled all packs in #{config.root_path}"
         logger.error "#{stderr}" unless stderr.empty?
-
-        if config.vite_compile_output?
-          logger.info stdout
-        end
+        logger.info stdout
       else
         non_empty_streams = [stdout, stderr].delete_if(&:empty?)
         logger.error "Compilation failed:\n#{non_empty_streams.join("\n\n")}"
