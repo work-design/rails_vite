@@ -9,7 +9,7 @@ module Viter
       if Rails.env.development?
         image_tag(name, **options)
       else
-        r = path_to_image(name)
+        r = compute_asset_path(name, type: :image)
         r = r.delete_prefix('/')
         mani = vite_manifest.find(r)
         if mani
