@@ -64,9 +64,10 @@ module Viter
     def run_vite
       logger.info 'Viter Compiling...'
 
+      binding.pry
       stdout, stderr, status = Open3.capture3(
-        webpack_env,
-        "#{ruby_runner} ./bin/vite",
+        vite_env,
+        "#{ruby_runner} ./bin/vite build",
         chdir: File.expand_path(config.root_path)
       )
 
@@ -99,7 +100,7 @@ module Viter
       config.cache_path.join("last-compilation-digest-#{viter.env}")
     end
 
-    def webpack_env
+    def vite_env
       return env unless defined?(ActionController::Base)
 
       env.merge(
