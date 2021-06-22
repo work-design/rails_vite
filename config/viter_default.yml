@@ -2,7 +2,6 @@
 default: &default
   public_root_path: public
   cache_path: tmp/cache/viter
-  vite_compile_output: true
 development:
   <<: *default
 test:

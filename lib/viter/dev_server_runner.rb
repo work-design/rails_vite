@@ -51,8 +51,6 @@ module Viter
       cmd += ['--config', @vite_config]
       cmd += ['--progress', '--color'] if @pretty
 
-      binding.pry
-
       Dir.chdir(@app_path) do
         Kernel.exec *cmd
       end

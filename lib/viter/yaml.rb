@@ -1,6 +1,3 @@
-# ignore config/viter.yml in git
-# gem 'webpacker', require: File.exist?('config/webpacker.yml')
-# config.webpacker.xxx = xx if config.respond_to?(:webpacker)
 module Viter
   class Yaml
     attr_reader :content
