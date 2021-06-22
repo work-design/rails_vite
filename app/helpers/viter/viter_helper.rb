@@ -49,7 +49,7 @@ module Viter
           r = compute_manifest_name(name)
           mani = vite_manifest.find(r)
           if mani
-            "#{mani['file']}"
+            "/#{mani['file']}"
           end
         end.compact
       end
@@ -69,7 +69,7 @@ module Viter
           mani = vite_manifest.find(r)
           if mani
             csses = []
-            csses += mani.fetch('css', []).map(&->(i){ "#{i}" })
+            csses += mani.fetch('css', []).map(&->(i){ "/#{i}" })
             mani.fetch('imports', []).map(&->(i){
               csses += vite_manifest.find_css(i)
             })
