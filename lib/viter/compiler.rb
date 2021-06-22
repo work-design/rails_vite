@@ -3,11 +3,6 @@ require 'digest/sha1'
 
 module Viter
   class Viter::Compiler
-    # Additional paths that test compiler needs to watch
-    # Webpacker::Compiler.watched_paths << 'bower_components'
-    #
-    # Deprecated. Use additional_paths in the YAML configuration instead.
-    cattr_accessor(:watched_paths) { [] }
 
     # Additional environment variables that the compiler is being run with
     # Webpacker::Compiler.env['FRONTEND_API_KEY'] = 'your_secret_key'
@@ -66,7 +61,7 @@ module Viter
       compilation_digest_path.write(watched_files_digest)
     end
 
-    def optionalRubyRunner
+    def ruby_runner
       bin_webpack_path = config.root_path.join('bin/viter')
       first_line = File.readlines(bin_webpack_path).first.chomp
       /ruby/.match?(first_line) ? RbConfig.ruby : ""
@@ -77,7 +72,7 @@ module Viter
 
       stdout, stderr, status = Open3.capture3(
         webpack_env,
-        "#{optionalRubyRunner} ./bin/webpack",
+        "#{ruby_runner} ./bin/webpack",
         chdir: File.expand_path(config.root_path)
       )
 
@@ -102,7 +97,7 @@ module Viter
         "#{config.source_path}/**/*",
         'yarn.lock',
         'package.json',
-        'config/webpack/**/*'
+        'config/vite/**/*'
       ].freeze
     end
 

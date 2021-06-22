@@ -2,7 +2,7 @@ module Viter
   class Env
     DEFAULT = 'production'.freeze
 
-    delegate :config_path, :logger, to: :@webpacker
+    delegate :config_path, :logger, to: :@viter
 
     def self.inquire(webpacker)
       new(webpacker).inquire

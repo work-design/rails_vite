@@ -9,7 +9,6 @@ module Viter
 
     def run
       load_config
-      detect_unsupported_switches!
       detect_port!
       execute_cmd
     end
@@ -32,24 +31,9 @@ module Viter
       @https = server.https?
 
     rescue Errno::ENOENT, NoMethodError
-      $stdout.puts "webpack server configuration not found in #{@config.config_path}[#{ENV["RAILS_ENV"]}]."
+      $stdout.puts "vite configuration not found in #{@config.config_path}[#{ENV["RAILS_ENV"]}]."
       $stdout.puts "Please run bundle exec rails webpacker:install to install Webpacker"
       exit!
-    end
-
-    UNSUPPORTED_SWITCHES = %w[--host --port]
-    private_constant :UNSUPPORTED_SWITCHES
-    def detect_unsupported_switches!
-      unsupported_switches = UNSUPPORTED_SWITCHES & @argv
-      if unsupported_switches.any?
-        $stdout.puts "The following CLI switches are not supported by Webpacker: #{unsupported_switches.join(' ')}. Please edit your command and try again."
-        exit!
-      end
-
-      if @argv.include?("--https") && !@https
-        $stdout.puts "Please set https: true in webpacker.yml to use the --https command line flag."
-        exit!
-      end
     end
 
     def detect_port!
