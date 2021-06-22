@@ -25,7 +25,6 @@ module Viter
         end
       end
 
-      vite.set 'base', ActionController::Base.helpers.compute_asset_host || '/'
       vite.dump
     end
 
