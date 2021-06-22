@@ -1,6 +1,7 @@
 # Vite 默认配置
 default: &default
   public_root_path: public
+  cache_path: tmp/cache/viter
 development:
   <<: *default
 test:

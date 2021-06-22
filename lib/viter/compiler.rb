@@ -16,12 +16,11 @@ module Viter
     end
 
     def compile
-      if stale?
+      if true #stale?
         run_vite.tap do |success|
-          record_compilation_digest
+          #record_compilation_digest
         end
       else
-        logger.debug "Everything's up-to-date. Nothing to do"
         true
       end
     end
@@ -57,9 +56,9 @@ module Viter
     end
 
     def ruby_runner
-      bin_webpack_path = config.root_path.join('bin/viter')
+      bin_webpack_path = config.root_path.join('bin/vite')
       first_line = File.readlines(bin_webpack_path).first.chomp
-      /ruby/.match?(first_line) ? RbConfig.ruby : ""
+      /ruby/.match?(first_line) ? RbConfig.ruby : ''
     end
 
     def run_vite
@@ -67,7 +66,7 @@ module Viter
 
       stdout, stderr, status = Open3.capture3(
         webpack_env,
-        "#{ruby_runner} ./bin/webpack",
+        "#{ruby_runner} ./bin/vite",
         chdir: File.expand_path(config.root_path)
       )
 

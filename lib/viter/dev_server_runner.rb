@@ -9,7 +9,6 @@ module Viter
 
     def run
       load_config
-      #detect_port!
       execute_cmd
     end
 
@@ -33,15 +32,6 @@ module Viter
     rescue Errno::ENOENT, NoMethodError
       $stdout.puts "vite configuration not found in #{@config.config_path}[#{ENV["RAILS_ENV"]}]."
       $stdout.puts "Please run bundle exec rails webpacker:install to install Webpacker"
-      exit!
-    end
-
-    def detect_port!
-      server = TCPServer.new(@hostname, @port)
-      server.close
-
-    rescue Errno::EADDRINUSE
-      $stdout.puts "Another program is running on port #{@port}. Set a new port in #{@config.config_path} for server"
       exit!
     end
 
