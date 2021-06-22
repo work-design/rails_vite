@@ -64,7 +64,6 @@ module Viter
     def run_vite
       logger.info 'Viter Compiling...'
 
-      binding.pry
       stdout, stderr, status = Open3.capture3(
         vite_env,
         "#{ruby_runner} ./bin/vite build",

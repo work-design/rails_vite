@@ -1,4 +1,9 @@
-# desc "Explaining what the task does"
-# task :viter do
-#   # Task goes here
-# end
+desc 'Viter Compile'
+
+namespace :viter do
+
+  task compile: [:environment] do
+    Viter.compile
+  end
+
+end
