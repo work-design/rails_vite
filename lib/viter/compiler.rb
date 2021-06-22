@@ -71,10 +71,10 @@ module Viter
       )
 
       if status.success?
-        logger.info "Compiled all packs in #{config.public_output_path}"
+        logger.info "Compiled all packs in #{config.root_path}"
         logger.error "#{stderr}" unless stderr.empty?
 
-        if config.webpack_compile_output?
+        if config.vite_compile_output?
           logger.info stdout
         end
       else
