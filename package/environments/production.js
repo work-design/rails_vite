@@ -25,7 +25,6 @@ const paths = () => {
 }
 
 const productionConfig = {
-  base: process.env.VITER_ASSET_HOST || '/',
   build: {
     ...config.build,
     manifest: true,

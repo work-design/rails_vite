@@ -29,7 +29,6 @@ module Viter
 
     config.after_initialize do |app|
       Viter::Exporter.export
-      ENV['VITER_ASSET_HOST'] ||= ActionController::Base.helpers.compute_asset_host
     end
 
   end
