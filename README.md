@@ -11,7 +11,7 @@ Inspired by [webpacker](https://github.com/rails/webpacker), But more powerful:
 ## How to Use
 
 * Install
-  * Add `gem 'viert'` to you gemfile, then bundle it;
+  * Add `gem 'viter'` to you gemfile, then bundle it;
   * Run `yarn add https://github.com/qinmingyuan/viter` add `viter` to package.json
 * In Production
   * 编译 Asset：`env RAILS_ENV=production rake viter:compile`
