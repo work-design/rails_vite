@@ -46,15 +46,20 @@ module Viter
       find(full_pack_name(name, pack_type[:type]))
     end
 
-    # Like lookup, except that if no asset is found, raises a Webpacker::Manifest::MissingEntryError.
+    # Like lookup, except that if no asset is found, raises a Viter::Manifest::MissingEntryError.
     def lookup!(name, pack_type = {})
       lookup(name, pack_type) || handle_missing_entry(name, pack_type)
     end
 
     def lookup_by_path(path)
       relative_path = path.relative_path_from config.source_path
+      r = find(relative_path)
 
-      find(relative_path)
+      if r.is_a? Hash
+        r['file']
+      elsif path.exist?
+        "@fs#{path.to_s}"
+      end
     end
 
     def compiling?

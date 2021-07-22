@@ -34,13 +34,11 @@ module Viter
       filename = [filename, '-', suffix].join if suffix
 
       pathname = Pathname.new(@_rendered_template_path)
-      js_name = pathname.without_extname.sub_ext ext
-      r = Viter.manifest.lookup_by_path(js_name)
+      asset_name = pathname.without_extname.sub_ext ext
+      r = Viter.manifest.lookup_by_path(asset_name)
 
-      if r && Rails.env.development?
-        [js_name.to_s, ext]
-      elsif r
-        [r['file']]
+      if r
+        [r, ext]
       else
         []
       end
