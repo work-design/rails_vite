@@ -31,16 +31,12 @@ module Viter
 
     rescue Errno::ENOENT, NoMethodError
       $stdout.puts "vite configuration not found in #{@config.config_path}[#{ENV["RAILS_ENV"]}]."
-      $stdout.puts "Please run bundle exec rails webpacker:install to install Webpacker"
+      $stdout.puts "Please run bundle exec rails viter:install to install viter"
       exit!
     end
 
     def execute_cmd
-      cmd = if node_modules_bin_exist?
-        ["#{@node_modules_bin_path}/vite"]
-      else
-        ['yarn', 'vite']
-      end
+      cmd = ['yarn', 'vite']
 
       if @argv.include?('--debug-viter')
         cmd = ['node', '--inspect-brk'] + cmd
