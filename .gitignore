@@ -1,9 +1,10 @@
-/.bundle/
-/doc/
-/log/*.log
-/pkg/
-/tmp/
-
-.byebug_history
+.bundle/
+docs/
+db/
+node_modules/
+log/*.log
+tmp/**/*.*
+!tmp/.keep
+!tmp/sockets/.keep
 
 *.gem
