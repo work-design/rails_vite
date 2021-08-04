@@ -29,9 +29,9 @@ module Viter
     end
 
     private
-    def assets_load_path(ext: '.js', suffix: nil)
+    def assets_load_path(ext: '.js', suffix: nil, separator: '-')
       filename = "#{controller_path}/#{@_rendered_template}"
-      filename = [filename, '-', suffix].join if suffix
+      filename = [filename, suffix].join(separator) if suffix
 
       pathname = Pathname.new(@_rendered_template_path)
       asset_name = pathname.without_extname.sub_ext ext

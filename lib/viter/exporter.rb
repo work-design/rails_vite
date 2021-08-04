@@ -7,6 +7,7 @@ module Viter
     def export
       vite = Yaml.new(template: 'config/viter_template.yml', export: 'config/viter.yml')
 
+      vite.append 'entry_paths', Rails.root.join('app/views').to_s
       Rails::Engine.subclasses.each do |engine|
         asset_root = engine.root.join('app/assets')
         if asset_root.directory?
@@ -21,7 +22,7 @@ module Viter
 
         entrypoint_root = engine.root.join('app/assets', 'entrypoints')
         if entrypoint_root.directory?
-          vite.append 'entry_paths', entrypoint_root
+          vite.append 'entry_paths', entrypoint_root.to_s
         end
       end
 
