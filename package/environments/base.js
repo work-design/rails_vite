@@ -27,6 +27,13 @@ const getPlugins = () => {
     )
   }
 
+  if (resolvedPath('@vitejs/plugin-vue')) {
+    const vue = require('@vitejs/plugin-vue').default
+    plugins.push(
+      vue()
+    )
+  }
+
   return plugins
 }
 
