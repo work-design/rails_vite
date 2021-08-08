@@ -2,8 +2,6 @@ const { basename, dirname, join, relative, resolve } = require('path')
 const { sync: globSync } = require('glob')
 const extname = require('path-complete-extname')
 
-
-
 const moduleExists = (packageName) => (!!resolvedPath(packageName))
 
 const getEntryObject = (rootPath) => {

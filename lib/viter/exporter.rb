@@ -14,6 +14,11 @@ module Viter
           vite.add 'alias', { "#{engine.engine_name}_ui" => asset_root.to_s }
         end
 
+        vue_root = engine.root.join('app/vue')
+        if vue_root.directory?
+          vite.add 'alias', { "#{engine.engine_name}_vue" => vue_root.to_s }
+        end
+
         view_root = engine.root.join('app/views')
         if view_root.directory?
           vite.append 'entry_paths', view_root.to_s
