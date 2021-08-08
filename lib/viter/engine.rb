@@ -1,5 +1,4 @@
-require 'rails/railtie'
-require 'viter/exporter'
+require 'rails_com/all'
 
 module Viter
   class Engine < ::Rails::Engine
@@ -15,10 +14,6 @@ module Viter
           Spring.watch(Viter.config.config_path)
         end
       end
-    end
-
-    config.after_initialize do |app|
-      Viter::Exporter.export
     end
 
   end

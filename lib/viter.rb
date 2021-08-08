@@ -42,8 +42,6 @@ require 'viter/manifest'
 require 'viter/compiler'
 require 'viter/commands'
 require 'viter/dev_server'
-
-if defined?(Rails)
-  require 'viter/railtie'
-  require 'viter/template_renderer'
-end
+require 'viter/exporter'
+require 'viter/engine'
+require 'viter/template_renderer'
