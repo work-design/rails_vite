@@ -11,7 +11,7 @@ module Viter
 
     def js_load(ext: '.js', **options)
       path, _ = assets_load_path(ext: ext, suffix: options.delete(:suffix))
-      options[:host] = Viter.instance.config.host if Rails.env.development?
+      options[:host] = Viter.instance.config.host if dev_host?
 
       if path
         javascript_include_tag("/#{path}", type: 'module', **options)
@@ -21,7 +21,7 @@ module Viter
     # Assets path: app/assets/stylesheets/controllers
     def css_load(ext: '.css', **options)
       path, _ = assets_load_path(ext: ext, suffix: options.delete(:suffix))
-      options[:host] = Viter.instance.config.host if Rails.env.development?
+      options[:host] = Viter.instance.config.host if dev_host?
 
       if path
         stylesheet_link_tag("/#{path}", **options)
@@ -42,6 +42,10 @@ module Viter
       else
         []
       end
+    end
+
+    def dev_host?
+      Rails.env.development? && !Viter.instance.manifest.exist?
     end
 
   end

@@ -10,10 +10,11 @@ module Viter
     class MissingEntryError < StandardError; end
 
     delegate :config, :compiler, :dev_server, to: :@viter
-    attr_reader :viter
+    attr_reader :viter, :public_manifest_path
 
     def initialize(viter)
       @viter = viter
+      @public_manifest_path = viter.config.public_manifest_path
     end
 
     def refresh
@@ -97,11 +98,15 @@ module Viter
     end
 
     def load
-      if config.public_manifest_path.exist?
-        JSON.parse config.public_manifest_path.read
+      if exist?
+        JSON.parse public_manifest_path.read
       else
         {}
       end
+    end
+
+    def exist?
+      public_manifest_path.exist?
     end
 
     # The `manifest_name` method strips of the file extension of the name, because in the

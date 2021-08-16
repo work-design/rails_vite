@@ -6,15 +6,15 @@ module Viter
   module ViterHelper
 
     def image_vite_tag(name, **options)
-      if Rails.env.development?
-        image_tag(name, **options)
-      else
+      if vite_manifest.exist?
         r = compute_asset_path(name, type: :image)
         r = r.delete_prefix('/')
         mani = vite_manifest.find(r)
         if mani
           image_tag("/#{mani['assets'][0]}", **options)
         end
+      else
+        image_tag(name, **options)
       end
     end
 
@@ -27,24 +27,21 @@ module Viter
     end
 
     def image_vite_path(name, **options)
-      if Rails.env.development?
-        image_path(name, options)
-      else
+      if vite_manifest.exist?
         r = compute_asset_path(name, type: :image)
         r = r.delete_prefix('/')
         mani = vite_manifest.find(r)
         if mani
           image_path("/#{mani['assets'][0]}", **options)
         end
+      else
+        image_path(name, options)
       end
     end
 
     # Public: Renders a <script> tag for the specified Vite entrypoints.
     def javascript_vite_tag(*names, type: 'module', crossorigin: 'anonymous', **options)
-      if Rails.env.development?
-        entries = names
-        options[:host] = Viter.instance.config.host
-      else
+      if vite_manifest.exist?
         entries = names.map do |name|
           r = compute_manifest_name(name)
           mani = vite_manifest.find(r)
@@ -52,6 +49,9 @@ module Viter
             "/#{mani['file']}"
           end
         end.compact
+      else
+        entries = names
+        options[:host] = Viter.instance.config.host
       end
 
       if entries.blank?
@@ -63,7 +63,7 @@ module Viter
 
     # Public: Renders a <link> tag for the specified Vite entrypoints.
     def stylesheet_vite_tag(*names, **options)
-      unless Rails.env.development?
+      if vite_manifest.exist?
         entries = names.map do |name|
           r = compute_manifest_name(name)
           mani = vite_manifest.find(r)
