@@ -12,7 +12,7 @@ module Viter
 
       @app_path = File.expand_path('.', Dir.pwd)
       @node_modules_bin_path = ENV['VITER_NODE_MODULES_BIN_PATH'] || `yarn bin`.chomp
-      @vite_config = File.join(@app_path, "config/vite/#{ENV["NODE_ENV"]}.js")
+      @vite_config = File.join(@app_path, "config/vite/#{ENV['NODE_ENV']}.js")
       @viter_config = File.join(@app_path, 'config/vite.yml')
 
       unless File.exist?(@vite_config)
