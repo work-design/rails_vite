@@ -29,6 +29,12 @@ module Viter
         if entrypoint_root.directory?
           vite.append 'entry_paths', entrypoint_root.to_s
         end
+
+        if engine.root.join('yarn.lock').exist?
+          Dir.chdir engine.root do
+            system 'yarn install'
+          end
+        end
       end
 
       vite.dump
