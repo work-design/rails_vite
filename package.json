@@ -1,6 +1,6 @@
 {
-  "name": "@work-design/viter",
-  "version": "0.1.4",
+  "name": "vite_rails",
+  "version": "0.0.1",
   "description": "Rails Common Javascript",
   "main": "package/index.js",
   "files": [
