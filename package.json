@@ -1,5 +1,5 @@
 {
-  "name": "viter",
+  "name": "@work-design/viter",
   "version": "0.1.4",
   "description": "Rails Common Javascript",
   "main": "package/index.js",
@@ -22,7 +22,7 @@
     "url": "git+https://github.com/qinmingyuan/viter.git"
   },
   "author": "mingyuanqin<mingyuan0715@foxmail.com>",
-  "license": "LGPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/qinmingyuan/viter/issues"
   },
