@@ -30,6 +30,7 @@ module Viter
           vite.append 'entry_paths', entrypoint_root.to_s
         end
 
+        # 为每个 engine 运行 yarn install
         if engine.root.join('yarn.lock').exist?
           Dir.chdir engine.root do
             system 'yarn install'
