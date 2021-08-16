@@ -6,4 +6,8 @@ namespace :viter do
     Viter.compile
   end
 
+  task clobber: [:environment] do
+    Viter.clobber
+  end
+
 end

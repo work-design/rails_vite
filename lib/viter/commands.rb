@@ -1,9 +1,9 @@
 module Viter
   class Commands
-    delegate :config, :compiler, :manifest, :logger, to: :@webpacker
+    delegate :config, :compiler, :manifest, :logger, to: :@viter
 
-    def initialize(webpacker)
-      @webpacker = webpacker
+    def initialize(viter)
+      @viter = viter
     end
 
     # Cleanup old assets in the compile directory. By default it will
@@ -41,7 +41,7 @@ module Viter
 
     def clobber
       config.public_output_path.rmtree if config.public_output_path.exist?
-      config.cache_path.rmtree if config.cache_path.exist?
+      config.public_manifest_path.rmtree if config.public_manifest_path.exist?
     end
 
     def bootstrap
