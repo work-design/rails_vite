@@ -33,6 +33,7 @@ module Viter
         # 为每个 engine 运行 yarn install
         if engine.root.join('yarn.lock').exist?
           Dir.chdir engine.root do
+            $stdout.puts "=====> install #{engine.root}"
             system 'yarn install'
           end
         end
