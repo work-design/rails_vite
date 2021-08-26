@@ -1,8 +1,6 @@
-require_relative 'lib/viter/version'
-
 Gem::Specification.new do |spec|
   spec.name = 'viter'
-  spec.version = Viter::VERSION
+  spec.version = '0.1'
   spec.authors = ['qinmingyuan']
   spec.email = ['mingyuan0715@foxmail.com']
   spec.homepage = 'https://github.com/qinmingyuan/viter'

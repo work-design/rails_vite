@@ -1,7 +1,7 @@
 namespace :viter do
 
-  desc 'Viter Compile'
-  task compile: [:environment] do
+  desc 'Viter Build'
+  task build: [:environment] do
     Viter.compile
   end
 
