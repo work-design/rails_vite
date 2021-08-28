@@ -19,12 +19,12 @@ module Viter
     end
 
     # Assets path: app/assets/stylesheets/controllers
-    def css_load(ext: '.css', **options)
+    def css_load(ext: '.scss', **options)
       path, _ = assets_load_path(ext: ext, suffix: options.delete(:suffix))
       options[:host] = Viter.instance.config.host if dev_host?
 
       if path
-        stylesheet_link_tag("/#{path}", **options)
+        stylesheet_link_tag("/#{path}", extname: ext, **options)
       end
     end
 
