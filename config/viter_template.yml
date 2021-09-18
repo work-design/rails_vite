@@ -4,7 +4,7 @@ default: &default
   cache_path: tmp/cache/viter
   entry_paths: []
   alias:
-    a: '/'
+    abcs: ../public
   build:
     assetsInlineLimit: 0
     sourcemap: false
