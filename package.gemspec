@@ -1,19 +1,19 @@
-Gem::Specification.new do |spec|
-  spec.name = 'viter'
-  spec.version = '0.1'
-  spec.authors = ['qinmingyuan']
-  spec.email = ['mingyuan0715@foxmail.com']
-  spec.homepage = 'https://github.com/qinmingyuan/viter'
-  spec.summary = 'Vite for Rails'
-  spec.description = 'Description of Viter.'
-  spec.license = 'MIT'
+Gem::Specification.new do |s|
+  s.name = 'rails_vite'
+  s.version = '0.0.1'
+  s.authors = ['qinmingyuan']
+  s.email = ['mingyuan0715@foxmail.com']
+  s.homepage = 'https://github.com/work-design/rails_vite'
+  s.summary = 'Vite for Rails'
+  s.description = 'Description of Viter.'
+  s.license = 'MIT'
 
-  spec.files = Dir[
+  s.files = Dir[
     '{app,config,db,lib}/**/*',
-    'MIT-LICENSE',
+    'LICENSE',
     'Rakefile',
     'README.md'
   ]
 
-  spec.add_dependency 'rails'
+  s.add_dependency 'rails'
 end

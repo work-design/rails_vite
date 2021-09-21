@@ -1,7 +1,7 @@
 {
-  "name": "vite_rails",
-  "version": "0.0.2",
-  "description": "Rails Common Javascript",
+  "name": "rails_vite",
+  "version": "0.0.3",
+  "description": "Vite for Rails",
   "main": "package/index.js",
   "files": [
     "package",
@@ -11,7 +11,7 @@
     "glob": "^7.1.7",
     "js-yaml": "^4.1.0",
     "path-complete-extname": "^1.0.0",
-    "vite": "^2.3.8"
+    "vite": "^2.5.10"
   },
   "devDependencies": {},
   "scripts": {
