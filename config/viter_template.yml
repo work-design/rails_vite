@@ -1,5 +1,4 @@
 default: &default
-  root_path: app/assets
   public_root_path: public
   cache_path: tmp/cache/viter
   entry_paths: []

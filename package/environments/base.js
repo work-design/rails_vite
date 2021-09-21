@@ -3,8 +3,6 @@
 
 const { join } = require('path')
 const config = require('../config')
-const rootPath = join(config.root_path)
-const getEntryObject = require('../utils')
 
 const resolvedPath = (packageName) => {
   try {
@@ -38,7 +36,6 @@ const getPlugins = () => {
 }
 
 module.exports = {
-  root: join(process.cwd(), config.root_path),
   base: config.base || '/',
   entry_paths: config.entry_paths,
   plugins: getPlugins(),
@@ -47,10 +44,5 @@ module.exports = {
   },
   css: {
     postcss: join(process.cwd(), 'postcss.config.js')
-  },
-  build: {
-    rollupOptions: {
-      input: getEntryObject(rootPath)
-    }
   }
 }

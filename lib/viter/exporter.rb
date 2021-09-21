@@ -8,6 +8,7 @@ module Viter
       vite = Yaml.new(template: 'config/viter_template.yml', export: 'config/viter.yml')
 
       vite.append 'entry_paths', Rails.root.join('app/views').to_s
+      vite.append 'entry_paths', Rails.root.join('app/assets', 'entrypoints').to_s
       Rails::Engine.subclasses.each do |engine|
         asset_root = engine.root.join('app/assets')
         if asset_root.directory?
@@ -22,6 +23,7 @@ module Viter
         view_root = engine.root.join('app/views')
         if view_root.directory?
           vite.append 'entry_paths', view_root.to_s
+          vite.add 'alias', { "#{engine.engine_name}_view" => view_root.to_s }
         end
 
         entrypoint_root = engine.root.join('app/assets', 'entrypoints')

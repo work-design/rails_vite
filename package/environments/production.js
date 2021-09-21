@@ -6,19 +6,11 @@ const config = require('../config')
 const getEntryObject = require('../utils')
 const { join } = require('path')
 
-const getPlugins = () => {
-  const plugins = []
-
-  plugins.push()
-
-  return plugins
-}
-
 const paths = () => {
   const result = {}
 
-  baseConfig.entry_paths.forEach((rootPath) => {
-    Object.assign(result, getEntryObject(rootPath))
+  baseConfig.entry_paths.forEach((entry_path) => {
+    Object.assign(result, getEntryObject(entry_path))
   })
 
   return result
@@ -32,7 +24,6 @@ const productionConfig = {
     outDir: join(process.cwd(), config.public_root_path),
     rollupOptions: {
       input: {
-        ...baseConfig.build.rollupOptions.input,
         ...paths()
       }
     }
