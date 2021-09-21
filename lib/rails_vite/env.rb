@@ -1,15 +1,15 @@
-module Viter
+module RailsVite
   class Env
     DEFAULT = 'production'.freeze
 
-    delegate :config_path, :logger, to: :@viter
+    delegate :config_path, :logger, to: :@rails_vite
 
-    def self.inquire(viter)
-      new(viter).inquire
+    def self.inquire(rails_vite)
+      new(rails_vite).inquire
     end
 
-    def initialize(viter)
-      @viter = viter
+    def initialize(rails_vite)
+      @rails_vite = rails_vite
     end
 
     def inquire
@@ -23,7 +23,7 @@ module Viter
     end
 
     def fallback_env_warning
-      logger.info "RAILS_ENV=#{Rails.env} environment is not defined in config/viter.yml, falling back to #{DEFAULT} environment"
+      logger.info "RAILS_ENV=#{Rails.env} environment is not defined in config/rails_vite.yml, falling back to #{DEFAULT} environment"
     end
 
     def available_environments

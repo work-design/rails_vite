@@ -2,7 +2,7 @@ require 'yaml'
 require 'active_support/core_ext/hash/keys'
 require 'active_support/core_ext/hash/indifferent_access'
 
-module Viter
+module RailsVite
   class Configuration
     attr_reader :root_path, :config_path, :env
 
@@ -76,8 +76,8 @@ module Viter
       end
       config[env].deep_symbolize_keys
     rescue Errno::ENOENT => e
-      raise "Viter configuration file not found #{config_path}. " \
-            "Please run rails viter:install " \
+      raise "RailsVite configuration file not found #{config_path}. " \
+            "Please run rails rails_vite:install " \
             "Error: #{e.message}"
 
     rescue Psych::SyntaxError => e

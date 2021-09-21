@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get '@fs/*path' => 'viter/common#index'
-  get 'images/*path' => 'viter/common#image'
+  get '@fs/*path' => 'vite/common#index'
+  get 'images/*path' => 'vite/common#image'
 end

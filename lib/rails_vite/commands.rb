@@ -1,9 +1,9 @@
-module Viter
+module RailsVite
   class Commands
-    delegate :config, :compiler, :manifest, :logger, to: :@viter
+    delegate :config, :compiler, :manifest, :logger, to: :@rails_vite
 
-    def initialize(viter)
-      @viter = viter
+    def initialize(rails_vite)
+      @rails_vite = rails_vite
     end
 
     # Cleanup old assets in the compile directory. By default it will

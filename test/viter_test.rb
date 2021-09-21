@@ -2,6 +2,6 @@ require "test_helper"
 
 class ViterTest < ActiveSupport::TestCase
   test "it has a version number" do
-    assert Viter::VERSION
+    assert RailsVite::VERSION
   end
 end

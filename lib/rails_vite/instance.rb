@@ -1,10 +1,10 @@
-module Viter
+module RailsVite
   class Instance
     cattr_accessor(:logger) { ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(STDOUT)) }
 
     attr_reader :root_path, :config_path
 
-    def initialize(root_path: Rails.root, config_path: Rails.root.join('config/viter.yml'))
+    def initialize(root_path: Rails.root, config_path: Rails.root.join('config/rails_vite.yml'))
       @root_path = root_path
       @config_path = config_path
     end

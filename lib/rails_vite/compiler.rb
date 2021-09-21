@@ -1,18 +1,18 @@
 require 'open3'
 require 'digest/sha1'
 
-module Viter
-  class Viter::Compiler
+module RailsVite
+  class RailsVite::Compiler
 
     # Additional environment variables that the compiler is being run with
-    # Viter::Compiler.env['FRONTEND_API_KEY'] = 'your_secret_key'
+    # RailsVite::Compiler.env['FRONTEND_API_KEY'] = 'your_secret_key'
     cattr_accessor(:env) { {} }
 
-    delegate :config, :logger, to: :viter
-    attr_reader :viter
+    delegate :config, :logger, to: :rails_vite
+    attr_reader :rails_vite
 
-    def initialize(viter)
-      @viter = viter
+    def initialize(rails_vite)
+      @rails_vite = rails_vite
     end
 
     def compile
@@ -42,7 +42,7 @@ module Viter
     end
 
     def watched_files_digest
-      warn "Webpacker::Compiler.watched_paths has been deprecated. Set additional_paths in viter.yml instead." unless watched_paths.empty?
+      warn "Webpacker::Compiler.watched_paths has been deprecated. Set additional_paths in rails_vite.yml instead." unless watched_paths.empty?
       Dir.chdir File.expand_path(config.root_path) do
         files = Dir[*default_watched_paths, *watched_paths].reject { |f| File.directory?(f) }
         file_ids = files.sort.map { |f| "#{File.basename(f)}/#{Digest::SHA1.file(f).hexdigest}" }
@@ -62,7 +62,7 @@ module Viter
     end
 
     def run_vite
-      logger.info 'Viter Compiling...'
+      logger.info 'RailsVite Compiling...'
 
       stdout, stderr, status = Open3.capture3(
         vite_env,
@@ -93,7 +93,7 @@ module Viter
     end
 
     def compilation_digest_path
-      config.cache_path.join("last-compilation-digest-#{viter.env}")
+      config.cache_path.join("last-compilation-digest-#{rails_vite.env}")
     end
 
     def vite_env
@@ -102,7 +102,7 @@ module Viter
       env.merge(
         'VITER_ASSET_HOST' => ENV.fetch('VITER_ASSET_HOST', ActionController::Base.helpers.compute_asset_host),
         'VITER_RELATIVE_URL_ROOT' => ENV.fetch('VITER_RELATIVE_URL_ROOT', ActionController::Base.relative_url_root),
-        'VITER_CONFIG' => viter.config_path.to_s
+        'VITER_CONFIG' => rails_vite.config_path.to_s
       )
     end
 

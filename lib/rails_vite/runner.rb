@@ -1,4 +1,4 @@
-module Viter
+module RailsVite
   class Runner
 
     def self.run(argv)
@@ -16,7 +16,7 @@ module Viter
       @viter_config = File.join(@app_path, 'config/vite.yml')
 
       unless File.exist?(@vite_config)
-        $stderr.puts "vite config #{@vite_config} not found, please run 'bundle exec rails vite:install' to install Viter with default configs or add the missing config file for your custom environment."
+        $stderr.puts "vite config #{@vite_config} not found, please run 'bundle exec rails vite:install' to install RailsVite with default configs or add the missing config file for your custom environment."
         exit!
       end
     end

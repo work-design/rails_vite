@@ -1,13 +1,13 @@
-namespace :viter do
+namespace :rails_vite do
 
-  desc 'Viter Build'
+  desc 'RailsVite Build'
   task build: [:environment] do
-    Viter.compile
+    RailsVite.compile
   end
 
-  desc 'viter clobber'
+  desc 'rails_vite clobber'
   task clobber: [:environment] do
-    Viter.clobber
+    RailsVite.clobber
   end
 
 end

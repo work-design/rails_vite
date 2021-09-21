@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qinmingyuan/viter.git"
+    "url": "git+https://github.com/work-design/rails_vite.git"
   },
   "author": "mingyuanqin<mingyuan0715@foxmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/qinmingyuan/viter/issues"
+    "url": "https://github.com/work-design/rails_vite/issues"
   },
-  "homepage": "https://github.com/qinmingyuan/viter"
+  "homepage": "https://github.com/work-design/rails_vite"
 }

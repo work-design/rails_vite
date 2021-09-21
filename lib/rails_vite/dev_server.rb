@@ -1,4 +1,4 @@
-module Viter
+module RailsVite
   class DevServer
 
     # Configure dev server connection timeout (in seconds), default: 0.01

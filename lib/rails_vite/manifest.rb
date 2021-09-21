@@ -4,17 +4,17 @@
 # "/packs/calendar-1016838bab065ae1e314.css".
 #
 # When the configuration is set to on-demand compilation, with the `compile: true` option in
-# the viter.yml file, any lookups will be preceded by a compilation if one is needed.
-module Viter
+# the rails_vite.yml file, any lookups will be preceded by a compilation if one is needed.
+module RailsVite
   class Manifest
     class MissingEntryError < StandardError; end
 
-    delegate :config, :compiler, :dev_server, to: :@viter
-    attr_reader :viter, :public_manifest_path
+    delegate :config, :compiler, :dev_server, to: :@rails_vite
+    attr_reader :rails_vite, :public_manifest_path
 
-    def initialize(viter)
-      @viter = viter
-      @public_manifest_path = viter.config.public_manifest_path
+    def initialize(rails_vite)
+      @rails_vite = rails_vite
+      @public_manifest_path = rails_vite.config.public_manifest_path
     end
 
     def refresh
@@ -35,19 +35,19 @@ module Viter
       lookup_pack_with_chunks(name, pack_type) || handle_missing_entry(name, pack_type)
     end
 
-    # Computes the relative path for a given Viter asset using manifest.json.
+    # Computes the relative path for a given RailsVite asset using manifest.json.
     # If no asset is found, returns nil.
     #
     # Example:
     #
-    #  Viter.manifest.lookup('calendar.js') # => "/packs/calendar-1016838bab065ae1e122.js"
+    #  RailsVite.manifest.lookup('calendar.js') # => "/packs/calendar-1016838bab065ae1e122.js"
     def lookup(name, pack_type = {})
       compile if compiling?
 
       find(full_pack_name(name, pack_type[:type]))
     end
 
-    # Like lookup, except that if no asset is found, raises a Viter::Manifest::MissingEntryError.
+    # Like lookup, except that if no asset is found, raises a RailsVite::Manifest::MissingEntryError.
     def lookup!(name, pack_type = {})
       lookup(name, pack_type) || handle_missing_entry(name, pack_type)
     end
@@ -68,7 +68,7 @@ module Viter
     end
 
     def compile
-      Viter.logger.tagged('Viter') { compiler.compile }
+      RailsVite.logger.tagged('RailsVite') { compiler.compile }
     end
 
     def data

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    viter (0.1)
+    rails_vite (0.0.1)
       rails
 
 GEM
@@ -79,12 +79,12 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.1)
     minitest (5.14.4)
     nio4r (2.5.8)
-    nokogiri (1.12.3-x86_64-darwin)
+    nokogiri (1.12.4-x86_64-darwin)
       racc (~> 1.4)
     racc (1.5.2)
     rack (2.2.3)
@@ -136,7 +136,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  viter!
+  rails_vite!
 
 BUNDLED WITH
    2.2.22

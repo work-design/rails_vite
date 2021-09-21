@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module Viter
+module Vite
   module AssetsHelper
 
     # Assets path: app/assets/javascripts/controllers
@@ -11,7 +11,7 @@ module Viter
 
     def js_load(ext: '.js', **options)
       path, _ = assets_load_path(ext: ext, suffix: options.delete(:suffix))
-      options[:host] = Viter.instance.config.host if dev_host?
+      options[:host] = RailsVite.instance.config.host if dev_host?
 
       if path
         javascript_include_tag("/#{path}", type: 'module', **options)
@@ -21,7 +21,7 @@ module Viter
     # Assets path: app/assets/stylesheets/controllers
     def css_load(ext: '.scss', **options)
       path, _ = assets_load_path(ext: ext, suffix: options.delete(:suffix))
-      options[:host] = Viter.instance.config.host if dev_host?
+      options[:host] = RailsVite.instance.config.host if dev_host?
 
       if path
         stylesheet_link_tag("/#{path}", extname: ext, **options)
@@ -35,7 +35,7 @@ module Viter
 
       pathname = Pathname.new(@_rendered_template_path)
       asset_name = pathname.without_extname.sub_ext ext
-      r = Viter.manifest.lookup_by_path(asset_name)
+      r = RailsVite.manifest.lookup_by_path(asset_name)
 
       if r
         [r, ext]
@@ -45,7 +45,7 @@ module Viter
     end
 
     def dev_host?
-      Rails.env.development? && !Viter.instance.manifest.exist?
+      Rails.env.development? && !RailsVite.instance.manifest.exist?
     end
 
   end

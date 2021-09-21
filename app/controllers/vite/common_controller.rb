@@ -1,4 +1,4 @@
-module Viter
+module Vite
   class CommonController < ActionController::Base
 
     def index

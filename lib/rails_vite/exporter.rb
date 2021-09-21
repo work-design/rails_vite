@@ -1,11 +1,11 @@
 require_relative 'yaml'
 
-module Viter
+module RailsVite
   module Exporter
     extend self
 
     def export
-      vite = Yaml.new(template: 'config/viter_template.yml', export: 'config/viter.yml')
+      vite = Yaml.new(template: 'config/viter_template.yml', export: 'config/rails_vite.yml')
 
       vite.append 'entry_paths', Rails.root.join('app/views').to_s
       vite.append 'entry_paths', Rails.root.join('app/assets', 'entrypoints').to_s

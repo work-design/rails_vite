@@ -1,4 +1,4 @@
-module Viter
+module RailsVite
   module TemplateRenderer
 
     def render_template(view, template, layout_name, locals)
@@ -10,5 +10,5 @@ module Viter
 end
 
 ActiveSupport.on_load :action_view do
-  ActionView::TemplateRenderer.prepend Viter::TemplateRenderer
+  ActionView::TemplateRenderer.prepend RailsVite::TemplateRenderer
 end

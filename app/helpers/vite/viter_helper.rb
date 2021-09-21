@@ -2,7 +2,7 @@
 
 # Public: Allows to render HTML tags for scripts and styles processed by Vite.
 
-module Viter
+module Vite
   module ViterHelper
 
     def image_vite_tag(name, **options)
@@ -51,7 +51,7 @@ module Viter
         end.compact
       else
         entries = names
-        options[:host] = Viter.instance.config.host
+        options[:host] = RailsVite.instance.config.host
       end
 
       if entries.blank?
@@ -83,7 +83,7 @@ module Viter
 
     private
     def vite_manifest
-      Viter.instance.manifest
+      RailsVite.instance.manifest
     end
 
     def compute_manifest_name(name, type: :javascript, **options)
