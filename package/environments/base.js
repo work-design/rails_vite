@@ -36,6 +36,7 @@ const getPlugins = () => {
 }
 
 module.exports = {
+  root: join(process.cwd(), config.root_path),
   base: config.base || '/',
   entry_paths: config.entry_paths,
   plugins: getPlugins(),

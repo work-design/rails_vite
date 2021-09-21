@@ -1,4 +1,5 @@
 default: &default
+  root_path: app/assets/entrypoints
   public_root_path: public
   cache_path: tmp/cache/vite
   entry_paths: []
