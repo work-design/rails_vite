@@ -19,7 +19,7 @@ module RailsVite
 
       @config = Configuration.new(
         root_path: app_root,
-        config_path: app_root.join('config/rails_vite.yml'),
+        config_path: app_root.join('config/vite.yml'),
         env: ENV['RAILS_ENV']
       )
 

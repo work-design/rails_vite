@@ -4,7 +4,7 @@ module RailsVite
 
     attr_reader :root_path, :config_path
 
-    def initialize(root_path: Rails.root, config_path: Rails.root.join('config/rails_vite.yml'))
+    def initialize(root_path: Rails.root, config_path: Rails.root.join('config/vite.yml'))
       @root_path = root_path
       @config_path = config_path
     end

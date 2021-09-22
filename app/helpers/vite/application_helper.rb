@@ -3,7 +3,7 @@
 # Public: Allows to render HTML tags for scripts and styles processed by Vite.
 
 module Vite
-  module ViterHelper
+  module ApplicationHelper
 
     def image_vite_tag(name, **options)
       if vite_manifest.exist?

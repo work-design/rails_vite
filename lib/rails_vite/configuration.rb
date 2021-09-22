@@ -88,7 +88,7 @@ module RailsVite
 
     def defaults
       @defaults ||= begin
-        path = File.expand_path('../../config/viter_default.yml', __dir__)
+        path = File.expand_path('../../config/vite_default.yml', __dir__)
         config = begin
           YAML.load_file(path, aliases: true)
         rescue ArgumentError

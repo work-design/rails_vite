@@ -4,7 +4,7 @@ const { readFileSync } = require('fs')
 const { railsEnv } = require('./env')
 const configPath = require('./configPath')
 
-const defaultConfigPath = require.resolve('../config/viter_default.yml')
+const defaultConfigPath = require.resolve('../config/vite_default.yml')
 
 const getDefaultConfig = () => {
   const defaultConfig = yaml.load(readFileSync(defaultConfigPath), 'utf8')

@@ -1,6 +1,6 @@
 {
   "name": "rails_vite",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "Vite for Rails",
   "main": "package/index.js",
   "files": [
