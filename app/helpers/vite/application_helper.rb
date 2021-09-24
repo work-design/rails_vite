@@ -7,8 +7,7 @@ module Vite
 
     def image_vite_tag(name, **options)
       if vite_manifest.exist?
-        r = compute_asset_path(name, type: :image)
-        r = r.delete_prefix('/')
+        r = compute_manifest_name(name, type: :image)
         mani = vite_manifest.find(r)
         if mani
           image_tag("/#{mani['assets'][0]}", **options)
@@ -28,8 +27,7 @@ module Vite
 
     def image_vite_path(name, **options)
       if vite_manifest.exist?
-        r = compute_asset_path(name, type: :image)
-        r = r.delete_prefix('/')
+        r = compute_manifest_name(name, type: :image)
         mani = vite_manifest.find(r)
         if mani
           image_path("/#{mani['assets'][0]}", **options)
@@ -86,11 +84,28 @@ module Vite
       RailsVite.instance.manifest
     end
 
-    def compute_manifest_name(name, type: :javascript, **options)
+    ASSET_PREFIXES = {
+      image: '../assets/'
+    }
+    def compute_manifest_name(name, type: :javascript, extname: nil)
       r = compute_asset_path(name, type: type)
-      extname = compute_asset_extname(name, type: type, **options)
       r.delete_prefix!('/')
-      "#{r}#{extname}"
+      extname = compute_asset_extname(name, type: type, extname: extname)
+      prefix = ASSET_PREFIXES[type] || ''
+
+      "#{prefix}#{r}#{extname}"
+    end
+
+    def compute_manifest_path(name, type: , extname: )
+      if vite_manifest.exist?
+        r = compute_manifest_name(name, type: type, extname: extname)
+        mani = vite_manifest.find(r)
+        if mani
+          "/#{mani['assets'][0]}"
+        end
+      else
+        name
+      end
     end
 
     # Internal: Renders a modulepreload link tag.
