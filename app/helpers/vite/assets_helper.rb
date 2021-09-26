@@ -32,10 +32,11 @@ module Vite
     def assets_load_path(ext: '.js', suffix: nil, separator: '-')
       filename = "#{controller_path}/#{@_rendered_template}"
       filename = [filename, suffix].join(separator) if suffix
+      filename = "#{filename}#{ext}"
 
-      pathname = Pathname.new(@_rendered_template_path)
-      asset_name = pathname.without_extname.sub_ext ext
-      r = RailsVite.manifest.lookup_by_path(asset_name)
+      #pathname = Pathname.new(@_rendered_template_path)
+      #asset_name = pathname.without_extname.sub_ext ext
+      r = RailsVite.manifest.find(filename)
 
       if r
         [r, ext]

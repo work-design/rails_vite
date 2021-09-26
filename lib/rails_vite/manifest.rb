@@ -99,7 +99,10 @@ module RailsVite
 
     def load
       if exist?
-        JSON.parse public_manifest_path.read
+        r = JSON.parse public_manifest_path.read
+        r.transform_keys! do |key|
+          key.gsub /^(.*?)(?<=app\/views)\//, ''
+        end
       else
         {}
       end
