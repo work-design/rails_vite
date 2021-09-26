@@ -39,7 +39,7 @@ module Vite
       r = RailsVite.manifest.find(filename)
 
       if r
-        [r, ext]
+        [r['file'], ext]
       else
         []
       end
