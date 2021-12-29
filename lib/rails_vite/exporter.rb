@@ -1,4 +1,5 @@
 require_relative 'yaml'
+require 'active_support/core_ext/pathname/existence'
 
 module RailsVite
   module Exporter
