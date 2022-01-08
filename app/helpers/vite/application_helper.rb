@@ -79,7 +79,6 @@ module Vite
       end
     end
 
-    private
     def vite_manifest
       RailsVite.instance.manifest
     end
